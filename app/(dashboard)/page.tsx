@@ -1,4 +1,4 @@
-import { UserButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 import React from "react";
 
 const DashboardPage = () => {
@@ -6,6 +6,7 @@ const DashboardPage = () => {
     <div>
       Hello
       <UserButton />
+      <SignInButton />
     </div>
   );
 };
