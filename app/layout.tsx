@@ -48,7 +48,7 @@ export const metadata: Metadata = {
       url: "https://github.com/AyushAryanSingh",
     },
   ],
-  creator: "Prabhat Kumar",
+  creator: "Binary",
   themeColor: "#ffffff",
   icons: {
     icon: "/favicon.ico",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
         alt: "Collaborative Whiteboard App Preview",
       },
     ],
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
