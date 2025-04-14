@@ -5,7 +5,9 @@ import{
     Dialog,
     DialogContent,
     DialogTrigger,
+    DialogTitle,
 } from  "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export const InviteButton = () => {
     return(
@@ -16,7 +18,11 @@ export const InviteButton = () => {
                     Invite Members
                 </Button>
             </DialogTrigger>
-            <DialogContent className="p-0 bg-transparent  border-none max-w-[880px]" >
+            <DialogContent className="!p-0 !bg-transparent !border-none !max-w-none !w-auto pt-18"
+                style={{ width: 'fit-content' }}>
+                <DialogTitle>
+                    <VisuallyHidden>Invite Members</VisuallyHidden>
+                </DialogTitle>
                 <OrganizationProfile routing="hash"/>
             </DialogContent>
         </Dialog>
