@@ -1,6 +1,8 @@
-import { type Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import { Toaster } from "@/components/ui/sonner"; 
 // import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 
@@ -49,7 +51,6 @@ export const metadata: Metadata = {
     },
   ],
   creator: "Binary",
-  themeColor: "#ffffff",
   icons: {
     icon: "/favicon.ico",
   },
@@ -81,6 +82,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://your-whiteboard-app-url.com"),
 };
 
+export const viewport: Viewport = {
+  themeColor: "black",
+}
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -91,7 +95,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+        <ConvexClientProvider>
+          <Toaster />
+          {children}
+          </ConvexClientProvider>
       </body>
     </html>
   );
