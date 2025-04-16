@@ -34,7 +34,7 @@ export const create = mutation({
 
     if (!identity.name) {
       toast.error("Please set your name in your profile settings.");
-      return;
+      throw new Error("Please set your name in your profile settings.");
     }
     console.log(randomImage, "TEST");
 

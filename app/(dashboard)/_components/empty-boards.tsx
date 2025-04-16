@@ -20,7 +20,6 @@ export const EmptyBoards = () => {
     })
       .then(() => {
         toast.success("Board Created");
-        //redirect  to board/ id
       })
       .catch(() => toast.error("Failed to create board"));
   };
