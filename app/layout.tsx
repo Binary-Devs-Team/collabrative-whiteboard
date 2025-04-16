@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import { Toaster } from "@/components/ui/sonner"; 
+import { Toaster } from "@/components/ui/sonner";
 // import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "black",
-}
+};
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -96,9 +96,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ConvexClientProvider>
-          <Toaster />
+          <Toaster richColors theme='system' />
           {children}
-          </ConvexClientProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );
