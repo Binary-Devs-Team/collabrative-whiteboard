@@ -5,13 +5,12 @@ import { api } from "@/convex/_generated/api";
 import { EmptySearch } from "./empty-search";
 import { EmptyFavorites } from "./empty-favorites";
 import { EmptyBoards } from "./empty-boards";
-import { useSearchParams } from "next/navigation"; // 🛑 You forgot this
+import { useSearchParams } from "next/navigation";
 import BoardCard from "./board-card";
 import NewBoardButton from "./new-board-button";
 
 interface BoardListProps {
   orgId: string;
-  query?: Record<string, string | undefined>;
 }
 
 export const BoardList = ({ orgId }: BoardListProps) => {
