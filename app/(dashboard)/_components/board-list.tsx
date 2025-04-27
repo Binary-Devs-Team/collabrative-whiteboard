@@ -11,6 +11,7 @@ import NewBoardButton from "./new-board-button";
 
 interface BoardListProps {
   orgId: string;
+  query?: Record<string, string | undefined>;
 }
 
 export const BoardList = ({ orgId }: BoardListProps) => {

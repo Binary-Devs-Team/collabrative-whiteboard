@@ -3,12 +3,11 @@ import React from "react";
 import { EmptyOrg } from "./_components/empty-org";
 import { useOrganization } from "@clerk/nextjs";
 import { BoardList } from "./_components/board-list";
+
 interface DashboardPageProps {
-  searchParams: {
-    search?: string;
-    favorites?: string;
-  };
+  searchParams: Record<string, string | undefined>; // Adjusted type
 }
+
 const DashboardPage = ({ searchParams }: DashboardPageProps) => {
   const { organization } = useOrganization();
   return (
