@@ -81,6 +81,22 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
     creator: "@real_prabhat1",
   },
+  appleWebApp: {
+    title: "Collaborative Whiteboard",
+    statusBarStyle: "black-translucent",
+    capable: true,
+
+    startupImage: [
+      "/og-image.png",
+      {
+        url: "/og-image.png",
+        media: "(device-width: 375px) and (-webkit-device-pixel-ratio: 2)",
+      },
+    ],
+  },
+
+  applicationName: "Collaborative Whiteboard",
+
   metadataBase: new URL("https://collabrative-whiteboard.vercel.app/"),
 };
 
