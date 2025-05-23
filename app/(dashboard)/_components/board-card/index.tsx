@@ -8,10 +8,10 @@ import { useAuth } from "@clerk/nextjs";
 import Footer from "./footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useApiMutation } from "@/hooks/use-api-mutation";
-import { api } from "@/convex/_generated/api"
+import { api } from "@/convex/_generated/api";
 import Actions from "@/components/actions";
 import { MoreHorizontal } from "lucide-react";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 interface BoardCardProps {
   id: string;
   title: string;
@@ -39,40 +39,38 @@ const BoardCard = ({
     addSuffix: true,
   });
 
-  const {
-    mutate: onFavourite,
-    pending: pendingFavourite,
-  } = useApiMutation(api.board.favourite);
-  const {
-    mutate: onunFavourite,
-    pending: pendingunFavourite,
-  } = useApiMutation(api.board.unfavourite);
+  const { mutate: onFavourite, pending: pendingFavourite } = useApiMutation(
+    api.board.favourite
+  );
+  const { mutate: onunFavourite, pending: pendingunFavourite } = useApiMutation(
+    api.board.unfavourite
+  );
 
-  const toggleFavourite = () =>{
-    if (isFavorite){
-      onunFavourite({ id })
-        .catch(() => toast.error("Failed to unfavourite"))
-    } else{
-      onFavourite({ id, orgId })
-      .catch(() => toast.error("Failed to favourite"))
+  const toggleFavourite = () => {
+    if (isFavorite) {
+      onunFavourite({ id }).catch(() => toast.error("Failed to unfavourite"));
+    } else {
+      onFavourite({ id, orgId }).catch(() =>
+        toast.error("Failed to favourite")
+      );
     }
   };
 
   return (
     <Link href={`/board/${id}`}>
-      <div className='group aspect-[100/127] rounded-lg border  flex flex-col justify-between overflow-hidden '>
-        <div className='relative w-full h-full p-6 flex items-center bg-amber-50 justify-center'>
+      <div className="group aspect-[100/127] rounded-lg border  flex flex-col justify-between overflow-hidden ">
+        <div className="relative w-full h-full p-6 flex items-center bg-amber-50 justify-center">
           <Image
             src={imageUrl}
             alt={title}
             width={150}
             height={150}
-            className='object-contain'
+            className="object-contain"
           />
           <Overlay />
-          <Actions id={id} title={title} side='right'>
-            <button className='absolute opacity-0 top-1 right-1 group-hover:opacity-100 px-3 py-2 outline-none'>
-              <MoreHorizontal className='text-white opacity-75 hover:opacity-100 transition-opacity  ' />
+          <Actions id={id} title={title} side="right">
+            <button className="absolute opacity-0 top-1 right-1 group-hover:opacity-100 px-3 py-2 outline-none">
+              <MoreHorizontal className="text-white opacity-75 hover:opacity-100 transition-opacity  " />
             </button>
           </Actions>
         </div>
@@ -91,8 +89,8 @@ const BoardCard = ({
 
 BoardCard.Skeleton = function BoardCardSkeleton() {
   return (
-    <div className='group aspect-[100/127] rounded-lg overflow-hidden '>
-      <Skeleton className='h-full w-full' />
+    <div className="group aspect-[100/127] rounded-lg overflow-hidden ">
+      <Skeleton className="h-full w-full" />
     </div>
   );
 };
