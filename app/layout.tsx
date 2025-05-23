@@ -60,11 +60,11 @@ export const metadata: Metadata = {
     title: "Collaborative Whiteboard | Real-time Whiteboard App",
     description:
       "Draw, brainstorm, and collaborate seamlessly with our intuitive whiteboard app powered by Convex and Next.js.",
-    url: "https://your-whiteboard-app-url.com",
+    url: "https://collabrative-whiteboard.vercel.app/",
     siteName: "Collaborative Whiteboard",
     images: [
       {
-        url: "https://your-whiteboard-app-url.com/og-image.png", // You should add this image for rich preview
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Collaborative Whiteboard App Preview",
@@ -74,14 +74,14 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Collaborative Whiteboard",
     description:
       "Collaborate in real-time with our Next.js powered whiteboard app. Built for teams and creators.",
-    images: ["https://your-whiteboard-app-url.com/og-image.png"],
+    images: ["/og-image.png"],
     creator: "@real_prabhat1",
   },
-  metadataBase: new URL("https://your-whiteboard-app-url.com"),
+  metadataBase: new URL("https://collabrative-whiteboard.vercel.app/"),
 };
 
 export const viewport: Viewport = {
