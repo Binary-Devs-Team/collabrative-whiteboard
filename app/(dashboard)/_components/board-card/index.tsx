@@ -48,11 +48,13 @@ const BoardCard = ({
 
   const toggleFavourite = () => {
     if (isFavorite) {
-      onunFavourite({ id }).catch(() => toast.error("Failed to unfavourite"));
+      onunFavourite({ id })
+        .then(() => toast.success("Unfavourited"))
+        .catch(() => toast.error("Failed to unfavourite"));
     } else {
-      onFavourite({ id, orgId }).catch(() =>
-        toast.error("Failed to favourite")
-      );
+      onFavourite({ id, orgId })
+        .then(() => toast.success("Favourited"))
+        .catch(() => toast.error("Failed to favourite"));
     }
   };
 
