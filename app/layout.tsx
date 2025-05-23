@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -92,14 +93,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ConvexClientProvider>
-          <Toaster richColors theme='system' />
+          <Toaster richColors theme="system" />
           <ModalProvider />
           {children}
+          <SpeedInsights />
         </ConvexClientProvider>
       </body>
     </html>
