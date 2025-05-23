@@ -63,8 +63,8 @@ const BoardCard = ({
           <Image
             src={imageUrl}
             alt={title}
-            width={150}
-            height={150}
+            width={100}
+            height={100}
             className="object-contain"
           />
           <Overlay />
