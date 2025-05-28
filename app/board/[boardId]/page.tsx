@@ -1,13 +1,12 @@
+import { Canvas } from "./_components/canvas";
 
-import {Canvas} from './_components/canvas'; 
 interface BoardIdPageProps {
-    params: {
-        boardId: string;
-    };
+  params: Promise<{ boardId: string }>;
+}
+
+const BoardIdPage = async ({ params }: BoardIdPageProps) => {
+  const { boardId } = await params;
+  return <Canvas boardId={boardId} />;
 };
-const BoardIdPage = ({params,}: BoardIdPageProps) => {
-    return (
-        <Canvas boardId={params.boardId}/>
-    );
-};
+
 export default BoardIdPage;
