@@ -57,7 +57,21 @@ export const remove = mutation({
     if (!identity) {
       throw new Error("Unauthorized");
     }
-    //Todo: Later Check to delete favorites too
+
+    const userId = identity.subject;
+    const existingFavourite = await ctx.db
+      .query("userFavourites")
+
+      .withIndex("by_user_board", (q) =>
+        q
+          .eq("userId", userId)
+          .eq("boardId", args.id)
+      )
+      .unique();
+    if (existingFavourite) {
+      await ctx.db.delete(existingFavourite._id);
+    }
+
     await ctx.db.delete(args.id);
   },
 });
@@ -100,11 +114,11 @@ export const favourite = mutation({
     const userId = identity.subject;
     const existingFavourite = await ctx.db
       .query("userFavourites")
-      .withIndex("by_user_board_org", (q) =>
+      .withIndex("by_user_board", (q) =>
         q
           .eq("userId", userId)
           .eq("boardId", board._id)
-          .eq("orgId", args.orgId)
+
       )
       .unique();
 
