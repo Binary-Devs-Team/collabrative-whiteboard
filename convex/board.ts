@@ -1,6 +1,6 @@
 import { v } from "convex/values";
 
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { toast } from "sonner";
 
 const images = [
@@ -63,9 +63,7 @@ export const remove = mutation({
       .query("userFavourites")
 
       .withIndex("by_user_board", (q) =>
-        q
-          .eq("userId", userId)
-          .eq("boardId", args.id)
+        q.eq("userId", userId).eq("boardId", args.id)
       )
       .unique();
     if (existingFavourite) {
@@ -97,7 +95,6 @@ export const update = mutation({
   },
 });
 
-
 export const favourite = mutation({
   args: { id: v.id("boards"), orgId: v.string() },
   handler: async (ctx, args) => {
@@ -115,10 +112,7 @@ export const favourite = mutation({
     const existingFavourite = await ctx.db
       .query("userFavourites")
       .withIndex("by_user_board", (q) =>
-        q
-          .eq("userId", userId)
-          .eq("boardId", board._id)
-
+        q.eq("userId", userId).eq("boardId", board._id)
       )
       .unique();
 
@@ -133,9 +127,8 @@ export const favourite = mutation({
     });
 
     return board;
-  }
-})
-
+  },
+});
 
 export const unfavourite = mutation({
   args: { id: v.id("boards") },
@@ -154,9 +147,7 @@ export const unfavourite = mutation({
     const existingFavourite = await ctx.db
       .query("userFavourites")
       .withIndex("by_user_board", (q) =>
-        q
-          .eq("userId", userId)
-          .eq("boardId", board._id)
+        q.eq("userId", userId).eq("boardId", board._id)
       )
       .unique();
 
@@ -167,5 +158,13 @@ export const unfavourite = mutation({
     await ctx.db.delete(existingFavourite._id);
 
     return board;
-  }
-})
+  },
+});
+
+export const get = query({
+  args: { id: v.id("boards") },
+  handler: async (ctx, args) => {
+    const board = ctx.db.get(args.id);
+    return board;
+  },
+});
