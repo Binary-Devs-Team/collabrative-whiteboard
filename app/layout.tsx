@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     siteName: "Collaborative Whiteboard",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Collaborative Whiteboard App Preview",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     title: "Collaborative Whiteboard",
     description:
       "Collaborate in real-time with our Next.js powered whiteboard app. Built for teams and creators.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image.png"],
     creator: "@real_prabhat1",
   },
   appleWebApp: {
@@ -87,9 +87,9 @@ export const metadata: Metadata = {
     capable: true,
 
     startupImage: [
-      "/og-image.png",
+      "/opengraph-image.png",
       {
-        url: "/og-image.png",
+        url: "/opengraph-image.png",
         media: "(device-width: 375px) and (-webkit-device-pixel-ratio: 2)",
       },
     ],
