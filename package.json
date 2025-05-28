@@ -20,6 +20,7 @@
     "clsx": "^2.1.1",
     "collabrative-whiteboard": "file:",
     "convex": "^1.23.0",
+    "convex-helpers": "^0.1.87",
     "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
     "lucide-react": "^0.484.0",
