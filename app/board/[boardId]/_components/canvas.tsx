@@ -28,11 +28,10 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
   const [camera, setCamera] = useState<Camera>({ x: 0, y: 0 });
 
-  // Note: We're currently not using the setter function returned by useState,
-// but we'll need to use it later to update the last used color dynamically.
-// To avoid ESLint's "no-unused-vars" error, we're using an underscore (_) for now.
-// When implementing color change functionality, replace "_" with "setLastUsedColor".
-const [lastUsedColor, _] = useState<Color>({
+// Note: setLastUsedColor is not used yet, so we're omitting it for now.
+// This avoids ESLint errors while keeping the state readable.
+// When we implement color updates, switch to: [lastUsedColor, setLastUsedColor]
+const [lastUsedColor] = useState<Color>({
   r: 0,
   g: 0,
   b: 0,
