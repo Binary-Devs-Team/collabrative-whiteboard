@@ -1,6 +1,7 @@
 "use client";
 
 // import { useSelf } from "@liveblocks/react";
+//please work 
 
 import { nanoid } from "nanoid";
 import { useCallback, useMemo, useState } from "react";
@@ -8,9 +9,9 @@ import {
   CanvasState,
   CanvasMode,
   Camera,
-  Color,
   LayerType,
   Point,
+  Color,
 } from "@/types/canvas";
 
 import { Info } from "./info";
