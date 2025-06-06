@@ -16,12 +16,11 @@ const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
   const onClick = () => {
     mutate({
       orgId,
-      title: "Untitled",
+      title: "New Board",
     })
       .then((id) => {
         toast.success("Board Created");
         router.push(`/board/${id}`);
-
       })
       .catch(() => toast.error("Failed to create board"));
   };
@@ -36,8 +35,8 @@ const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
       )}
       onClick={onClick}
     >
-      <Plus className='h-12 w-12 text-white stroke-1 ' />
-      <p className='text-xs text-white font-light '>New Board</p>
+      <Plus className="h-12 w-12 text-white stroke-1 " />
+      <p className="text-xs text-white font-light ">New Board</p>
     </button>
   );
 };
