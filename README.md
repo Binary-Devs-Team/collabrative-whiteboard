@@ -1,36 +1,231 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Collaborative Whiteboard
 
-## Getting Started
+A real-time collaborative whiteboard application built with Next.js, Liveblocks, Convex, and Clerk. Create, share, and collaborate on whiteboards with multiple users in real-time.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Core Functionality
+
+- **Real-time Collaboration**: Multiple users can work on the same board simultaneously
+- **Drawing Tools**: Create rectangles, ellipses, text, notes, and freehand drawings
+- **Layer Management**: Organize content with a layered system
+- **Color Picker**: Customize colors for all drawing elements
+- **Selection & Transformation**: Select, move, and resize elements
+- **Camera Controls**: Pan and zoom across the canvas
+
+### User Experience
+
+- **Organization-based Boards**: Create boards within organizations
+- **Board Management**: Create, rename, and delete boards
+- **User Presence**: See other users' cursors and selections in real-time
+- **Responsive Design**: Works on desktop and mobile devices
+- **Dark/Light Theme**: Toggle between themes
+
+### Technical Features
+
+- **Authentication**: Secure user authentication with Clerk
+- **Real-time Database**: Powered by Convex for instant updates
+- **Real-time Sync**: Liveblocks for collaborative features
+- **TypeScript**: Full type safety throughout the application
+- **Modern UI**: Beautiful interface with Radix UI and Tailwind CSS
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **Next.js 15.2** - React framework with App Router
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Radix UI** - Headless UI components
+
+### Backend & Services
+
+- **Convex** - Backend database and API
+- **Liveblocks** - Real-time collaboration
+- **Clerk** - Authentication and user management
+
+### Key Libraries
+
+- **Perfect Freehand** - Smooth drawing paths
+- **Zustand** - State management
+- **React ContentEditable** - Editable text elements
+- **Lodash Throttle** - Performance optimization
+- **Date-fns** - Date manipulation
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+- Clerk account (for authentication)
+- Convex account (for database)
+- Liveblocks account (for real-time features)
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Binary-Devs-Team/collabrative-whiteboard.git
+   cd collabrative-whiteboard
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory:
+
+   ```env
+   # Clerk Authentication
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_SECRET_KEY=your_clerk_secret_key
+
+   # Convex Database
+   NEXT_PUBLIC_CONVEX_URL=your_convex_url
+   CONVEX_DEPLOY_KEY=your_convex_deploy_key
+
+   # Liveblocks
+   LIVEBLOCKS_SECRET_KEY=your_liveblocks_secret_key
+   ```
+
+4. **Set up Convex**
+
+   ```bash
+   npx convex dev
+   ```
+
+5. **Run the development server**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+├── app/                    # Next.js App Router pages
+│   ├── (dashboard)/        # Dashboard pages (organization-based)
+│   │   ├── page.tsx       # Main dashboard
+│   │   └── _components/   # Dashboard components
+│   ├── api/               # API routes
+│   ├── board/[boardId]/   # Individual board pages
+│   └── globals.css        # Global styles
+├── components/            # Reusable components
+│   ├── ui/               # UI components (Radix-based)
+│   ├── auth/             # Authentication components
+│   └── modals/           # Modal components
+├── convex/               # Convex backend schema and functions
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility functions
+├── providers/            # Context providers
+├── store/                # Zustand stores
+├── types/                # TypeScript type definitions
+└── public/               # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Canvas Types & Tools
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The whiteboard supports multiple types of elements:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Drawing Tools
 
-## Learn More
+- **Rectangle** (`LayerType.Rectangle`): Create rectangular shapes
+- **Ellipse** (`LayerType.Ellipse`): Create circular/elliptical shapes
+- **Text** (`LayerType.Text`): Add text elements
+- **Note** (`LayerType.Note`): Create sticky note-style elements
+- **Path** (`LayerType.Path`): Freehand drawing with perfect-freehand
 
-To learn more about Next.js, take a look at the following resources:
+### Canvas Modes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Selection**: Select and manipulate elements
+- **Insertion**: Add new elements to the canvas
+- **Translation**: Move selected elements
+- **Resizing**: Resize selected elements
+- **Pencil**: Freehand drawing mode
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤝 Real-time Collaboration
 
-## Deploy on Vercel
+The application uses Liveblocks for real-time features:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Presence**: See other users' cursors and selections
+- **Storage**: Shared canvas state with layers and elements
+- **Broadcasting**: Real-time updates across all connected users
+- **Conflict Resolution**: Automatic handling of concurrent edits
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Available Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+## 🌐 Deployment
+
+### Vercel (Recommended)
+
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables in Vercel dashboard
+3. Deploy automatically on every push
+
+### Other Platforms
+
+The app can be deployed on any platform that supports Next.js:
+
+- Netlify
+- Railway
+- Docker
+- AWS/GCP/Azure
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Liveblocks](https://liveblocks.io/) for real-time collaboration
+- [Convex](https://convex.dev/) for the backend infrastructure
+- [Clerk](https://clerk.dev/) for authentication
+- [Radix UI](https://radix-ui.com/) for accessible components
+- [Perfect Freehand](https://github.com/steveruizok/perfect-freehand) for smooth drawing
+
+## 📞 Support
+
+If you have any questions or need help, please:
+
+- Open an issue on GitHub
+- Contact the Binary Devs Team
+
+---
+
+Built with ❤️ by [Binary Devs Team](https://github.com/Binary-Devs-Team)
